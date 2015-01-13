@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5104.robot;
 
+import org.usfirst.frc.team5104.robot.partition.Core;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -26,21 +28,22 @@ public class Console {
 		driveRightBack = new Talon(3);
 		drive = new RobotDrive(driveLeftFront, driveLeftBack, driveRightFront, driveRightBack);
 		
-		
+		Core.init();
 	}
 	
 	protected static void auto(){
 		
 		
+		
+		Core.auto();
 	}
 	
 	protected static void tele(){
-		
 		drive.mecanumDrive_Cartesian(controller.getX(), controller.getY(), controller.getRawAxis(5), 0);
 		robotVolt = ds.getBatteryVoltage();
-		print("Voltage: " + robotVolt);
-			
 		
+		
+		Core.tele();
 	}
 	
 	public static void print(String text){

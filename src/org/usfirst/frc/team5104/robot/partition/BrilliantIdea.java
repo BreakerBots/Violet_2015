@@ -6,5 +6,10 @@ public class BrilliantIdea {
 		
 	}
 	
+	public static void teleop(){
 	
+		
+		
+		
+	}
 }
