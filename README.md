@@ -7,8 +7,9 @@ Violet Robot Code
   - Henry Travis
   - Zeus Marquez
 + Components: 
-  - Java 1.8
+  - JRE 1.8 (Java)
+  - Eclipse (Luna)
   - WPIlibj (FIRST Robot's Library)
-  - ExtLib (An extention library by Anthony Waldsmith)
+  - ExtLib (An extention library for more safe code execution)
   - Multiple Package Programming Distribution
   - Github sync
