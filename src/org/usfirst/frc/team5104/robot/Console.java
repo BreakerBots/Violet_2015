@@ -24,22 +24,28 @@ public class Console {
 	private int errors;
 	
 	protected static void init(){
-		ds = DriverStation.getInstance();
 		controller = new Joystick(0);
 		driveLeftFront = new Talon(0);
 		driveLeftBack = new Talon(1);
 		driveRightFront = new Talon(2);
 		driveRightBack = new Talon(3);
+		ds = DriverStation.getInstance();
+		drive = new RobotDrive(driveLeftFront, driveLeftBack, driveRightFront, driveRightBack);
 		enableJoystick = true;
 		robotVolt = 12;
-		drive = new RobotDrive(driveLeftFront, driveLeftBack, driveRightFront, driveRightBack);
 		checkVolt();
 		print("Robot started @ " + ((int)robotVolt) + " volts.");
 		errors = 0;
 		print("Core System finished with {" + errors + "} errors.");
-		print("Attempting to initialize external packages...")	
-		Core.init();
-		print("Robot is ready!")
+		print("Attempting to initialize /partitions/...");
+		try {
+			Core.init();
+		} catch (Exception e) {
+			print("WARNING: Exception! Dumping Stack Trace...");
+			e.printStackTrace();
+			System.exit(1);
+		}
+		print("Robot is ready!");
 	}
 	
 	protected static void auto(){
@@ -67,13 +73,13 @@ public class Console {
 		robotVolt = ds.getBatteryVoltage();
 		if(robotVolt <= 6){
 			print("WARNING: Robot battery needs to be replaced soon!");
-			print("WARNING: Voltage: " ((int)robotVolt) + "")
+			print("WARNING: Voltage: " ((int)robotVolt) + "");
 		} else if(robotVolt <= 3){
 			print("WARNING: Robot going to die soon! Battery must be replaced!");
-			print("WARNING: Voltage: " ((int)robotVolt) + "")
+			print("WARNING: Voltage: " ((int)robotVolt) + "");
 		} else if(robotVolt >= 15){
 			print("WARNING: Over-charged battery may have un-predictable results!");
-			print("WARNING: Voltage: " ((int)robotVolt) + "")
+			print("WARNING: Voltage: " ((int)robotVolt) + "");
 		}
 	}
 
