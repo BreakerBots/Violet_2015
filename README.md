@@ -1,11 +1,6 @@
 Violet Robot Code
 =======
 + Robot code for FIRST Robotics Team 5104.
-+ Programmers:
-  - Anthony Waldsmith
-  - Henry Loh
-  - Henry Travis
-  - Zeus Marquez
 + Components: 
   - JRE 1.8 (Java)
   - Eclipse (Luna)
